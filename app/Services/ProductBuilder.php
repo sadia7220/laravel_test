@@ -16,6 +16,7 @@ class ProductBuilder extends Builder {
             'name' => $item->name,
             'slug' => $item->slug,
             'created_at' => $this->formatSingleTime($item->created_at),
+            'updated_at' => $this->formatSingleTime($item->updated_at),
         ];
 
         return $final;

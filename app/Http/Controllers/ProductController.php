@@ -16,10 +16,10 @@ class ProductController extends Controller
 
     use ActivityTrait;
 
-    public function __construct(ProductBuilder $productBuilder)
-    {
-        $this->productBuilder = $productBuilder;
-    }
+    // public function __construct(ProductBuilder $productBuilder)
+    // {
+    //     $this->productBuilder = $productBuilder;
+    // }
 
     /**
      * Display a listing of the resource.
@@ -93,7 +93,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, ProductBuilder $productBuilder)
     {
         $product = Product::find($id);
 
@@ -102,7 +102,9 @@ class ProductController extends Controller
 
         if(!$product) return $this->getResponse(404, 'Not Found');
 
-        return $this->getResponse(200, 'Product Information', $this->productBuilder->transformProduct($product));
+        
+
+        return $this->getResponse(200, 'Product Information', $productBuilder->transformProduct($product));
     }
 
     /**
