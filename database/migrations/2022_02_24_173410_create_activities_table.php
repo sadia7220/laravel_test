@@ -13,7 +13,7 @@ class CreateActivitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('activities', function (Blueprint $table) {
+        Schema::connection('mysql2')->create('activities', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('causer');
