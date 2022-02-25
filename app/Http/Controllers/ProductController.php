@@ -10,6 +10,8 @@ use App\Services\ProductBuilder;
 use App\Traits\ActivityTrait;
 use Illuminate\Support\Facades\Log;
 
+use Illuminate\Support\Facades\DB;
+
 class ProductController extends Controller
 {
     protected $productBuilder;
@@ -28,7 +30,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::all();
+        
+        $products = DB::table('products')->get();
+
+        //$products = Product::all();
+
+        return $products;
+
         //return ProductResource::collection(Product::all());
 
         // $role = $this->getUserRole();
